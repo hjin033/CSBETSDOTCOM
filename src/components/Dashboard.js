@@ -3,14 +3,14 @@
 
  const Dashboard = () => {
     return (
-        <div className="dashboard">
-            <h1>Select a Game</h1>
-            <div ClassName="games">
-                <Link to="/roulette">Roulette</Link>
-                <Link to="/coinflip">Coinflip</Link>
-                <Link to="/crash">Crash</Link>
-                <Link to="/upgrade">Upgrade</Link>
-                <Link to="/caseopener">Case Opener</Link>
+        <div className="text-center w-full">
+            <h2 className="text-3x1 font-bold text-center mb-8">Select a Game</h2>
+            <div ClassName="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <Link to="/roulette" className="game-card">Roulette</Link>
+                <Link to="/coinflip" className="game-card">Coinflip</Link>
+                <Link to="/crash" className="game-card">Crash</Link>
+                <Link to="/upgrade" className="game-card">Upgrade</Link>
+                <Link to="/caseopener" className="game-card">Case Opener</Link>
             </div>
         </div>
     );

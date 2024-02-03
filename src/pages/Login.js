@@ -1,11 +1,10 @@
 import React from 'react';
 import './Login.css'
-import background from '../img/background.jpg'
 import { Link } from 'react-router-dom';
 
 const Login = () => {
     return(
-        <div style={{backgroundImage: `url(${background})`}}className="Background">
+        <div className="Background">
             <div className='LoginBox'>
                 <p className="Title">CSBETSDOTCOM</p>
                 <form className="LoginForm">

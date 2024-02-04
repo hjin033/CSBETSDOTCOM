@@ -9,14 +9,14 @@
 
 .LoginBox{
     width: 300px;
-    height: 300px;
+    height: 340px;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
 }
 
 .Title {
@@ -29,30 +29,61 @@
 }
 
 .LoginInput {
-    border-radius: 5px;
+    background-color: transparent;
     height: 30px;
     width: 235px;
     margin-top: 7%;
     text-indent: 2px;
     margin-bottom: 5px;
     margin-left: 10%;
+    border-bottom: 2px solid white;
+    color:white;
+}
+
+.LoginInput:focus{
+    outline:none;
 }
 
 .LoginBtn {
     font-size: x-large;
-    margin-left: 33%;
+    margin-left: 10%;
     text-align: center;
     background-color: rgb(54, 39, 39);
     border-radius: 5px;
     margin-top: 15%;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 235px;
     color: white;
+    margin-bottom: 2%;
+}
 
+.LoginBtn:hover {
+    background-color: rgb(75, 54, 54);
 }
 
 .LoginForm {
     display: block;
-    
 }
 
+.RegLink {
+    color: white;
+    text-decoration: underline;
+    text-align: center;
+    margin-left: 27%;
+}
+
+.RegBtn {
+    font-size: x-large;
+    margin-left: 10%;
+    text-align: center;
+    background-color: rgb(54, 39, 39);
+    border-radius: 5px;
+    margin-top: 7%;
+    width: 235px;
+    color: white;
+    transition: 0.5s;
+
+}
+
+.RegBtn:hover {
+    background-color: rgb(75, 54, 54);
+}

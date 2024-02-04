@@ -7,12 +7,14 @@ import Roulette from './pages/Roulette';
 import Crash from './pages/Crash';
 import Upgrade from './pages/Upgrade';
 import CaseOpener from './pages/CaseOpener';
+import Register from './pages/Register';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/coinflip" element={<Coinflip />} />
         <Route path="/roulette" element={<Roulette />} />

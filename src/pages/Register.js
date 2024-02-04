@@ -2,7 +2,7 @@ import React from 'react';
 import './Login.css'
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     return(
         <div className="Background">
             <div className='LoginBox'>
@@ -18,8 +18,12 @@ const Login = () => {
                         placeholder='Password'
                         className='LoginInput'
                     />
-                    <Link to="/home"><button className='LoginBtn'>Login</button></Link>
-                    <Link to="/register" className='RegLink'>create an account</Link>
+                    <input
+                        type="Password"
+                        placeholder='Confirm Password'
+                        className='LoginInput'
+                    />
+                    <Link to="/home"><button className='RegBtn'>Register</button></Link>
                 </form>
             </div>
         </div>
@@ -27,4 +31,4 @@ const Login = () => {
 };
 
 
-export default Login;
+export default Register;

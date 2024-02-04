@@ -2,7 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import Coinflip from './pages/Coinflip'; // Import Coinflip component
+import Coinflip from './pages/Coinflip';
+import Roulette from './pages/Roulette';
+import Crash from './pages/Crash';
+import Upgrade from './pages/Upgrade';
+import CaseOpener from './pages/CaseOpener';
 
 function App() {
   return (
@@ -10,7 +14,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/coinflip" element={<Coinflip />} /> {/* Add Coinflip route */}
+        <Route path="/coinflip" element={<Coinflip />} />
+        <Route path="/roulette" element={<Roulette />} />
+        <Route path="/crash" element={<Crash />} />
+        <Route path="/upgrade" element={<Upgrade />} />
+        <Route path="/caseopener" element={<CaseOpener />} />
       </Routes>
     </Router>
   );

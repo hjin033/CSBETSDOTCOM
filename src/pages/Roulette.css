@@ -1,0 +1,102 @@
+.main {
+    background-color: rgb(25, 26, 32);
+    height: 100vh;
+}
+
+.Rwheel {
+    display: flex;
+    justify-content: center;
+}
+
+.resultContainer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: large;
+}
+
+.spinContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.spinBtn {
+    background-color: rgb(15, 15, 19);
+    padding: 5px 15px 5px 15px;
+    font-size: xx-large;
+    color: white;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    border-radius: 10px;
+}
+
+.colorCol {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+}
+
+.col {
+    display: grid;
+    padding: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    justify-content: center;
+    background-color: rgb(15, 15, 19);
+    border-radius: 10px;
+    height: 15vh;
+}
+
+.betAmount {
+    margin-top: 2vh;
+    color: white;
+    font-size: large;
+}
+
+.betInput {
+    background-color: rgb(25, 26, 32);
+    padding-left: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.betInput::-webkit-inner-spin-button,
+.betInput::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.redBet {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.greenBet {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.blackBet {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+button:disabled {
+    background-color: gray;
+    color: rgba(255, 255, 255, 0.199);
+}

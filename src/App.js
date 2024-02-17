@@ -8,6 +8,7 @@ import Crash from './pages/Crash';
 import Upgrade from './pages/Upgrade';
 import CaseOpener from './pages/CaseOpener';
 import Register from './pages/Register';
+import Inventory from './pages/Inventory';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/crash" element={<Crash />} />
         <Route path="/upgrade" element={<Upgrade />} />
         <Route path="/caseopener" element={<CaseOpener />} />
+        <Route path="/inventory" element={<Inventory />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,7 @@
 // src/pages/Coinflip.js
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
+
 
 function Coinflip() {
   const [result, setResult] = useState('');
@@ -37,6 +39,7 @@ function Coinflip() {
 
   return (
     <div>
+      <Navbar />
       <h2>Coinflip Game</h2>
       <p>Your balance: ${balance}</p>
       <form onSubmit={handleSubmit}>

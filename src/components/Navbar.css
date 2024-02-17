@@ -1,0 +1,42 @@
+.nav {
+    background-color: rgb(15, 15, 19);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:auto;
+}
+
+.mode {
+    position: relative;
+    font-size: large;
+    color: white;
+}
+
+*,
+*:before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mode::after{
+    content: "";
+    position:absolute;
+    background-color: gray;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -8px;
+    transition: 0.3s;
+}
+
+.mode:hover{
+    color: gray;
+}
+
+.mode:hover::after{
+    width: 100%;
+}

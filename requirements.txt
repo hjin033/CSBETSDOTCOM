@@ -1,3 +1,7 @@
 tailwindcss
 postcss
 autoprefixer
+react-router-dom
+pg
+bcrypt
+dotenv

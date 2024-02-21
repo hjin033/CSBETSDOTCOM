@@ -6,7 +6,7 @@ const Register = () => {
     return(
         <div className="Background">
             <div className='LoginBox'>
-                <p className="Title">CSBETSDOTCOM</p>
+                <div className="Title">CSBETSDOTCOM</div>
                 <form className="LoginForm">
                     <input
                         type="text"

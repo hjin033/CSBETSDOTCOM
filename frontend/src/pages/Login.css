@@ -33,9 +33,9 @@
     height: 30px;
     width: 235px;
     margin-top: 7%;
+    margin-left: 10%;
     text-indent: 2px;
     margin-bottom: 5px;
-    margin-left: 10%;
     border-bottom: 2px solid white;
     color:white;
 }
@@ -46,7 +46,6 @@
 
 .LoginBtn {
     font-size: x-large;
-    margin-left: 10%;
     text-align: center;
     background-color: rgb(54, 39, 39);
     border-radius: 5px;
@@ -61,19 +60,17 @@
 }
 
 .LoginForm {
-    display: block;
+    display: grid;
 }
 
 .RegLink {
     color: white;
     text-decoration: underline;
     text-align: center;
-    margin-left: 27%;
 }
 
 .RegBtn {
     font-size: x-large;
-    margin-left: 10%;
     text-align: center;
     background-color: rgb(54, 39, 39);
     border-radius: 5px;

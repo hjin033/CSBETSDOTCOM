@@ -4,7 +4,6 @@
  const Dashboard = () => {
     return (
         <div className="text-center w-full">
-            <h2 className="text-3x1 font-bold text-center mb-8">Select a Game</h2>
             <div ClassName="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 <Link to="/roulette" className="game-card">Roulette</Link>
                 <Link to="/coinflip" className="game-card">Coinflip</Link>

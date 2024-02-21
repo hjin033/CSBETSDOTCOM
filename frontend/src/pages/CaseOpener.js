@@ -36,13 +36,13 @@ function ItemCard({ itemName, itemURL, itemRarity }) {
   return (
     <div className='ItemCard'>
       <div className='ItemCard2'>
-        <h1 style={{
+        <p style={{
           color: itemColor,
           textAlign: 'center',
           padding: '15px'
         }}>
           {itemName}
-        </h1>
+        </p>
         <img 
           src={itemURL} 
           alt={itemName} 

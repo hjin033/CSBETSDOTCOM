@@ -1,17 +1,57 @@
 import React from 'react';
 import './Home.css'
-// import { Link } from 'react-router-dom';
-import Dashboard from "../components/Dashboard";
+import { Link } from 'react-router-dom';
+
+function GameCard({ gameName, gameURL }) {
+    return (
+        <div className='GameCard'>
+          <div className='GameCard2'>
+              <Link to={gameURL}>{gameName}</Link>
+          </div>
+        </div>
+      );
+}
+
+let Games = [
+    {
+        'gameName' : 'Case Opener',
+        'gameURL' : '/caseopener'
+    },
+    {
+        'gameName' : 'Coin Flip',
+        'gameURL' : '/coinflip'
+    },
+    {
+        'gameName' : 'Crash',
+        'gameURL' : '/crash'
+    },
+    {
+        'gameName' : 'Roulette',
+        'gameURL' : '/roulette'
+    },
+    {
+        'gameName' : 'Upgrade',
+        'gameURL' : '/upgrade'
+    },
+    {
+        'gameName' : 'Inventory',
+        'gameURL' : '/inventory'
+    }
+]
 
 const Home = () => {
     return (
-        // <div className="flex flex-col justify-center items-center justify-center min-h-screen bg-gray-900 text-white">
         <div className="Background">
-            <header className="mb-8 mt-0 md:mt-12 w-full text-center">
-                <h1 className="text-5x1 font-bold mb-4">CSBETSDOTCOM</h1>
-                <p className="text-x1">The premier destination for Counter Strike gambling.</p>
-                <Dashboard />
-            </header>
+            <div className="Header">CSBETSDOTCOM</div>
+            <div className="p">The premier destination for Counter Strike gambling.</div>
+            <div class="Container">
+                {Games.map(game => (
+                    <GameCard
+                        gameName={game.gameName}
+                        gameURL={game.gameURL}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

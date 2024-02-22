@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 function GameCard({ gameName, gameURL }) {
     return (
         <div className='GameCard'>
-          <div className='GameCard2'>
-              <Link to={gameURL}>{gameName}</Link>
-          </div>
+          <Link to={gameURL}>
+            <div className='GameCard2'>
+              {gameName}
+            </div>
+          </Link>
         </div>
       );
 }

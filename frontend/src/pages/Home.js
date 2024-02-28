@@ -44,8 +44,9 @@ let Games = [
 const Home = () => {
     return (
         <div className="Background">
-            <div className="Header">CSBETSDOTCOM</div>
-            <div className="p">The premier destination for Counter Strike gambling.</div>
+            <div className='Logo'></div>
+            {/* <div className="Header">CSBETSDOTCOM</div> */}
+            {/* <div className="p">The premier destination for Counter Strike gambling.</div> */}
             <div class="Container">
                 {Games.map(game => (
                     <GameCard

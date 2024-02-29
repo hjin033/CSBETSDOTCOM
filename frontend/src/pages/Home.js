@@ -43,7 +43,8 @@ let Games = [
 
 const Home = () => {
     return (
-        <div className="Background">
+        <div className="Background1">
+            <div className='Background2'></div>
             <div className='Logo'></div>
             {/* <div className="Header">CSBETSDOTCOM</div> */}
             {/* <div className="p">The premier destination for Counter Strike gambling.</div> */}

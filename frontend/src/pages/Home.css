@@ -3,15 +3,11 @@
 }
 
 .Background2 {
-    background-image: linear-gradient(163deg, rgba(0, 255, 117, 1), rgba(55, 0, 255, 1));
-    opacity: 50%;
-    width: 100vw;
-    height: 100vh;
-    background-repeat: no-repeat center center;
-    background-size: cover;
+    background-image: linear-gradient(163deg, rgba(0, 255, 117, .3), rgba(55, 0, 255, .3));
+    min-width: 100%;
+    min-height: 100%;
     text-align: center;
-    overflow: hidden;
-    position: absolute;
+    position: fixed;
 }
 
 .Logo {
@@ -20,30 +16,15 @@
     margin-right: auto;
     width: 25%;
     height: 25%;
+    min-width: 175px;
+    min-height: 100px;
     content:url('../img/CSBETSDOTCOM.png');
-}
-
-.Header {
-    font-family: Georgia;
-    font-size: 4rem;
-    color: white;
-    text-shadow: .25rem .25rem .25rem gray;
-    text-align: center;
-}
-
-.p {
-    font-size: 1rem;
-    color: white;
-    text-shadow: .25rem .25rem .25rem gray;
-    text-align: center;
-    padding-bottom: 2rem;
 }
 
 .Container {
     position: relative;
     width: 100%;
-    /* max-width: 700px; */
-    /* height: 100%; */
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -54,7 +35,7 @@
 .GameCard {
     position: relative;
     width: 30rem;
-	height: 234px;
+	height: 230px;
     background-image: linear-gradient(163deg, rgba(0, 255, 117, 1), rgba(55, 0, 255, 1));
     color: white;
     border-radius: 1rem;
@@ -69,8 +50,8 @@
 
 .GameCard2 {
     position: relative;
-    width: 30rem;
-	height: 234px;
+    width: 100%;
+	height: 100%;
     background: #1a1a1a;
 	border-radius: .5rem;
 	transition: all .1s;

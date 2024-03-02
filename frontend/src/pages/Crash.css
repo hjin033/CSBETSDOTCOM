@@ -1,0 +1,74 @@
+.crash-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-panel {
+    width: 80%;
+    height: 300px;
+    background-color: #333;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+.multiplier,
+.estimated-winnings {
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+}
+
+.multiplier {
+    right: 20px; 
+    top: 10px; 
+}
+
+.estimated-winnings {
+    right: 20px; 
+    bottom: 10px; 
+}
+
+.bet-panel {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bet-panel input {
+    padding: 10px;
+    width: 200px;
+    margin-right: 20px;
+}
+
+.bet-panel button {
+    padding: 10px 20px;
+    border: none;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+.bet-panel button:disabled {
+    background-color: #ccc;
+}
+
+.crashed-label {
+    color: red;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Adjust the padding to prevent overlap with the graph */
+.game-panel > .multiplier,
+.game-panel > .estimated-winnings {
+    padding-right: 10px; 
+}

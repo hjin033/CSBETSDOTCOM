@@ -86,6 +86,7 @@ function Crash() {
 
   return (
     <div>
+      <div className='Background2'></div>
       <Navbar />
       <div className="crash-container">
         <div className="game-panel">

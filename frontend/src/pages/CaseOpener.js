@@ -133,6 +133,7 @@ let Chroma2Case = [
 function CaseOpener() {
   return (
     <div>
+      <div className='Background2'></div>
       <Navbar />
       {Chroma2Case.map(item => (
         <ItemCard

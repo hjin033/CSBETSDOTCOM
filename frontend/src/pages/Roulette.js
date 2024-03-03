@@ -167,6 +167,7 @@ function Roulette() {
 
   return (
     <div>
+      <div className='Background2'></div>
       <Navbar />
       <div className='main'>
         <div className='Rwheel'>
@@ -190,27 +191,29 @@ function Roulette() {
         <div className='spinContainer'>
           <button className='spinBtn' onClick={spinHandleClick} disabled={(game ? true : false) || color === ''}>SPIN</button>
         </div>
-        <div className='colorCol'>
-          <div className='col'>
-            <div className='betAmount'>
-              $
-              <input className='betInput' type="number" min="1" onChange={(event) => event = setRed(parseFloat(event.target.value).toFixed(2))}/>
+        <div className='betContainer'>
+          <div className='colorCol'>
+            <div className='col'>
+              <div className='betAmount'>
+                $
+                <input className='betInput' type="number" min="1" onChange={(event) => event = setRed(parseFloat(event.target.value).toFixed(2))}/>
+              </div>
+              <button className= 'redBet' onClick={redHandleClick} disabled={(game ? true : false) || (color === 'Red')}>Red</button>
             </div>
-            <button className= 'redBet' onClick={redHandleClick} disabled={(game ? true : false) || (color === 'Red')}>Red</button>
-          </div>
-          <div className='col'>
-            <div className='betAmount'>
-              $
-              <input className='betInput' type="number" min="1" onChange={(event) => setGreen(parseFloat(event.target.value).toFixed(2))}/>
+            <div className='col'>
+              <div className='betAmount'>
+                $
+                <input className='betInput' type="number" min="1" onChange={(event) => setGreen(parseFloat(event.target.value).toFixed(2))}/>
+              </div>
+              <button className= 'greenBet' onClick={greenHandleClick} disabled={(game ? true : false) || (color === 'Green')}>Green</button>
             </div>
-            <button className= 'greenBet' onClick={greenHandleClick} disabled={(game ? true : false) || (color === 'Green')}>Green</button>
-          </div>
-          <div className='col'>
-            <div className='betAmount'>
-              $
-              <input className='betInput' type="number" min="1" onChange={(event) => setBlack(parseFloat(event.target.value).toFixed(2))}/>
+            <div className='col'>
+              <div className='betAmount'>
+                $
+                <input className='betInput' type="number" min="1" onChange={(event) => setBlack(parseFloat(event.target.value).toFixed(2))}/>
+              </div>
+              <button className= 'blackBet' onClick={blackHandleClick} disabled={(game ? true : false) || (color === 'Black')}>Black</button>
             </div>
-            <button className= 'blackBet' onClick={blackHandleClick} disabled={(game ? true : false) || (color === 'Black')}>Black</button>
           </div>
         </div>
       </div>

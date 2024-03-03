@@ -73,6 +73,7 @@ function Coinflip() {
 
   return (
     <div>
+      <div className='Background2'></div>
       <Navbar />
       <div className="game-container">
         

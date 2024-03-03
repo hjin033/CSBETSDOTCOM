@@ -1,19 +1,19 @@
 // src/pages/Coinflip.js
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import './Coinflip.css'; 
+import './Coinflip.css'; // Make sure this path is correct
 
 function Coinflip() {
   const [headsCount, setHeadsCount] = useState(0);
   const [tailsCount, setTailsCount] = useState(0);
   const [coinAnimation, setCoinAnimation] = useState('');
-  const [gold, setGold] = useState(100); // Starting gold amount
+  const [Wallet, setWallet] = useState(10000); // Starting Wallet amount
   const [bet, setBet] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [resultMessage, setResultMessage] = useState('');
 
   const flipCoin = () => {
-    if (bet <= 0 || bet > gold) {
+    if (bet <= 0 || bet > Wallet) {
       alert('Invalid bet amount.');
       return;
     }
@@ -27,20 +27,20 @@ function Coinflip() {
       if (isHeads) {
         setHeadsCount(headsCount + 1);
         if (selectedOption === 'Heads') {
-          setGold(gold + bet * 0.5);
-          outcomeMessage = `YOU WIN! You've won ${bet * 0.5} gold.`;
+          setWallet(Wallet + bet * 0.5);
+          outcomeMessage = `YOU WIN! You've won ${bet * 0.5} $.`;
         } else {
-          setGold(gold - bet);
-          outcomeMessage = `YOU LOSE! You've lost ${bet} gold.`;
+          setWallet(Wallet - bet);
+          outcomeMessage = `YOU LOSE! You've lost ${bet} $.`;
         }
       } else {
         setTailsCount(tailsCount + 1);
         if (selectedOption === 'Tails') {
-          setGold(gold + bet * 0.5);
-          outcomeMessage = `YOU WIN! You've won ${bet * 0.5} gold.`;
+          setWallet(Wallet + bet * 0.5);
+          outcomeMessage = `YOU WIN! You've won ${bet * 0.5} Wallet.`;
         } else {
-          setGold(gold - bet);
-          outcomeMessage = `YOU LOSE! You've lost ${bet} gold.`;
+          setWallet(Wallet - bet);
+          outcomeMessage = `YOU LOSE! You've lost ${bet} Wallet.`;
         }
       }
       setCoinAnimation(''); // Reset the animation
@@ -95,7 +95,7 @@ function Coinflip() {
         {/* Betting container */}
         <div className="betting-container">
           <div className="betting-stats">
-            <div>Gold: {gold}</div>
+            <div>Wallet ($): {Wallet}</div>
           </div>
           <div className="betting-options">
             <button onClick={() => handleOptionSelection('Heads')} disabled={selectedOption === 'Heads'}>Heads</button>

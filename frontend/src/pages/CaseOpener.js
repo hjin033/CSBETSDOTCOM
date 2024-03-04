@@ -1,4 +1,5 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState } from 'react';
+import { motion, useAnimation } from "framer-motion";
 
 import Navbar from '../components/Navbar'
 import CaseItemCard from '../components/CaseItemCard';
@@ -178,69 +179,71 @@ let KilowattCase = [
 		  'ItemRarity': 'Contraband'
 	  }
 ]
-let currentCase = [];
-let winningItem = KilowattCase.at(Math.random() * KilowattCase.length);
-for (let i = 0; i < 156; i++) {
-	currentCase.push(KilowattCase.at(Math.random() * 7));
-}
-currentCase.push(winningItem);
-for (let i = 0; i < 4; i++) {
-	currentCase.push(KilowattCase.at(Math.random() * 7));
+
+function GetRollList(caseToChooseFrom) {
+	let currentCase = [];
+	let winningItem = caseToChooseFrom.at(Math.random() * caseToChooseFrom.length);
+	for (let i = 0; i < 156; i++) {
+		currentCase.push(caseToChooseFrom.at(Math.random() * 7));
+	}
+	currentCase.push(winningItem);
+	for (let i = 0; i < 4; i++) {
+		currentCase.push(caseToChooseFrom.at(Math.random() * 7));
+	}
+	return currentCase;
 }
 
+let gCurrentCase = GetRollList(Chroma2Case);
+
 function CaseOpener() {
-<<<<<<< HEAD
-  return (
-    <div>
-      <div className='Background2'></div>
-      <Navbar />
-      {Chroma2Case.map(item => (
-        <ItemCard
-          itemName={item.ItemName}
-          itemURL={item.ItemURL}
-          itemRarity={item.ItemRarity}
-        />
-      ))}
-    </div>
-  );
-=======
-	return (
-		<div>
-    		<Navbar/>
-    		<div className='CaseOpenerPage'>
-				<button className='CaseOpenerButton'>Open Case!</button>
-				<div className='CaseOpenerGameBackground'>
-					<div className="Indicator"/>
-					<div className='CaseOpenerGame'>
-						<div className='CaseOpenerScroll'>
-							{
-								currentCase.map(item => (
-									<CaseItemCard
-										itemName={item.ItemName}
-										itemURL={item.ItemURL}
-										itemRarity={item.ItemRarity}
-									/>
-								))
-							}
-						</div>
-					</div>
-				</div>
-				<div className='CaseDescriptionContainer'>
-					<div className='CaseDescriptionName'>Case Items</div>
-					<div className='CaseOpenerItemContainer'>
-						{KilowattCase.map(item => (
-							<CaseItemCard
-								itemName={item.ItemName}
-								itemURL={item.ItemURL}
-								itemRarity={item.ItemRarity}
-							/>
-      					))}
-					</div>
-				</div>
-      		</div>
-    	</div>
-	);
->>>>>>> main
+    const [playingGame, setPlayingGame] = useState(false);
+    const controls = useAnimation(); // Initialize the animation control
+
+    function handleCaseClick() {
+		gCurrentCase = GetRollList(Chroma2Case);
+
+        setPlayingGame(true); // Disable button when animation is playing
+        
+        // Reset the animation to its initial state instantly
+        controls.set({ x: 0 });
+
+        // Then start the animation
+        controls.start({ x: -38500, transition: { ease: "easeOut", duration: 5 } })
+            .then(() => {
+                setPlayingGame(false); // Re-enable the button once the animation is complete
+            });
+    }
+
+    return (
+        <>
+            <div className='Background2'></div>
+            <Navbar/>
+            <div className='ButtonContainer'>
+                <button className='OpenCaseButton' onClick={handleCaseClick} disabled={playingGame}>Open Case!</button>
+            </div>
+            <div className='Container'>
+                <div className='ScrollerBackgroundContainer'>
+                    <motion.div className='ScrollerContainer'
+                        initial={{ x: 0 }} // Start from position 0
+                        animate={controls} // Use the animation controls here
+                    >
+                        {
+                            // Map your items here
+                            gCurrentCase.map((item, index) => (
+                                <CaseItemCard
+                                    key={index}
+                                    itemName={item.ItemName}
+                                    itemURL={item.ItemURL}
+                                    itemRarity={item.ItemRarity}
+                                />
+                            ))
+                        }
+                    </motion.div>
+                    <div className='Indicator'></div>
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default CaseOpener;

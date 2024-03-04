@@ -66,6 +66,7 @@ function InventoryCard({ itemName, itemURL, itemRarity, itemDurability, itemStat
 			}}>
 				${itemValue}
 			</div>
+			<button className='InventorySellButton'>Sell</button>
 		</div>
 	  </div>
 	);

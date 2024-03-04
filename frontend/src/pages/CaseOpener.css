@@ -43,7 +43,7 @@ body {
 	flex-wrap: nowrap;
 	overflow-x: show;
 
-	transform: translateX(-95%);
+	/*transform: translateX(-95%);*/
 	transition: transform 10s cubic-bezier(0,.01,0,1.01);
 }
 .CaseOpenerPage {

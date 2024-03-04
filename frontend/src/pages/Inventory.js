@@ -71,134 +71,11 @@ function InventoryCard({ itemName, itemURL, itemRarity, itemDurability, itemStat
 	  </div>
 	);
   }
-  
-  let UserInventory = [
-	{
-	  'ItemName'  		: "AK-47 | Elite Build",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_217.jpg",
-	  'ItemRarity'		: 'Mil-Spec',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'True',
-	  'ItemValue'		: '123.45'
-	},
-	{
-	  'ItemName'  		: "MP7 | Armor Core",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_223.jpg",
-	  'ItemRarity'		: 'Mil-Spec',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '245.67'
-	},
-	{
-	  'ItemName'  		: "Desert Eagle | Bronze Deco",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_219.jpg",
-	  'ItemRarity'		: 'Mil-Spec',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '50.12'
-	},
-	{
-	  'ItemName'  		: "P250 | Valence",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_221.jpg",
-	  'ItemRarity'		: 'Mil-Spec',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '1.03'
-	},
-	{
-	  'ItemName'  		: "Negev | Man-o'-war",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_227.jpg",
-	  'ItemRarity'		: 'Mil-Spec',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '1.52'
-	},
-	{
-	  'ItemName'  		: "Sawed-Off | Origami",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_225.jpg",
-	  'ItemRarity'		: 'Mil-Spec',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '100.05'
-	},
-	{
-	  'ItemName'  		: "AWP | Worm God",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_209.jpg",
-	  'ItemRarity'		: 'Restricted',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '50.45'
-	},
-	{
-	  'ItemName'  		: "MAG-7 | Heat",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_211.jpg",
-	  'ItemRarity'		: 'Restricted',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '45.89'
-	},
-	{
-	  'ItemName'  		: "CZ75-Auto | Pole Position",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_213.jpg",
-	  'ItemRarity'		: 'Restricted',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '132.58'
-	},
-	{
-	  'ItemName'  		: "UMP-45 | Grand Prix",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_215.jpg",
-	  'ItemRarity'		: 'Restricted',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '123.45'
-	},
-	{
-	  'ItemName'  		: "Five-SeveN | Monkey Business",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_205.jpg",
-	  'ItemRarity'		: 'Classified',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '96.52'
-	},
-	{
-	  'ItemName'  		: "Galil AR | Eco",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_203.jpg",
-	  'ItemRarity'		: 'Classified',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '555.20'
-	},
-	{
-	  'ItemName'  		: "FAMAS | Djinn",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_207.jpg",
-	  'ItemRarity'		: 'Classified',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '44.74'
-	},
-	{
-	  'ItemName'  		: "M4A1-S Hyper Beast",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_199.jpg",
-	  'ItemRarity'		: 'Covert',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '40.87'
-	},
-	{
-	  'ItemName'  		: "MAC-10 | Neon Rider",
-	  'ItemURL'   		: "/assets/Case Item Images/Chroma-2-Case/image_201.jpg",
-	  'ItemRarity'		: 'Covert',
-	  'ItemDurability' 	: '1.00',
-	  'ItemStatTrack'	: 'False',
-	  'ItemValue'		: '60.59'
-	},
-  ]
 
-function Inventory() {
+function Inventory(props) {
 	let userInventoryValue = 0;
-	
-	UserInventory.forEach((element) => userInventoryValue += Number(element.ItemValue));
+
+	props.userState.inventory.forEach((element) => userInventoryValue += Number(element.ItemValue));
 
 	return (
     	<div>
@@ -206,17 +83,17 @@ function Inventory() {
       	<div>
 			<div className='InventoryUserMetaDataContainer'>
 				<div className='InventoryUserMetaData'>
-					Username: CoolerGuyRy
+					Username: {props.userState.name}
 				</div>
 				<div className='InventoryUserMetaData'>
-					Balance: $134.72
+					Balance: ${props.userState.balance.toFixed(2)}
 				</div>
 				<div className='InventoryUserMetaData'>
 					Inventory Value: ${userInventoryValue.toFixed(2)}
 				</div>
 			</div>
 		<div className='InventoryContainer'>
-			{UserInventory.map(item => (
+			{props.userState.inventory.map(item => (
         		<InventoryCard
           			itemName={item.ItemName}
           			itemURL={item.ItemURL}

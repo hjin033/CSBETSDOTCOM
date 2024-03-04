@@ -180,38 +180,52 @@ let KilowattCase = [
 	  }
 ]
 
-function GetRollList(caseToChooseFrom) {
-	let currentCase = [];
-	let winningItem = caseToChooseFrom.at(Math.random() * caseToChooseFrom.length);
+function GetRollerList(generativeCase) {
+	let returningCase = [];
+	let winningItem = generativeCase.at(Math.random() * generativeCase.length);
 	for (let i = 0; i < 156; i++) {
-		currentCase.push(caseToChooseFrom.at(Math.random() * 7));
+		returningCase.push(generativeCase.at(Math.random() * 7));
 	}
-	currentCase.push(winningItem);
+	returningCase.push(winningItem);
 	for (let i = 0; i < 4; i++) {
-		currentCase.push(caseToChooseFrom.at(Math.random() * 7));
+		returningCase.push(generativeCase.at(Math.random() * 7));
 	}
-	return currentCase;
+	return { returningCase, winningItem };
 }
 
-let gCurrentCase = GetRollList(Chroma2Case);
+function GenerateItem(winningItem) {
+	let returningItem = {
+		'ItemName'  		: winningItem.ItemName,
+		'ItemURL'   		: winningItem.ItemURL,
+		'ItemRarity'		: winningItem.ItemRarity,
+		'ItemDurability' 	: String(Math.random() * 0.75),
+		'ItemStatTrack'		: String(Math.random()),
+		'ItemValue'			: String((Math.random() * 1000).toFixed(2))
+	}
 
-function CaseOpener() {
+	return returningItem;
+}
+
+let gUserCase = KilowattCase;
+let gRollerItems = GetRollerList(gUserCase);
+
+function CaseOpener(props) {
     const [playingGame, setPlayingGame] = useState(false);
-    const controls = useAnimation(); // Initialize the animation control
+    const controls = useAnimation();
 
     function handleCaseClick() {
-		gCurrentCase = GetRollList(Chroma2Case);
-
-        setPlayingGame(true); // Disable button when animation is playing
+		gRollerItems = GetRollerList(gUserCase);
+        setPlayingGame(true);
         
-        // Reset the animation to its initial state instantly
         controls.set({ x: 0 });
 
-        // Then start the animation
         controls.start({ x: -38500, transition: { ease: "easeOut", duration: 5 } })
             .then(() => {
-                setPlayingGame(false); // Re-enable the button once the animation is complete
-            });
+                setPlayingGame(false);
+				alert('You won a ' + gRollerItems.winningItem.ItemName);
+				props.userState.inventory.push(GenerateItem(gRollerItems.winningItem));
+            }
+		);
     }
 
     return (
@@ -228,8 +242,7 @@ function CaseOpener() {
                         animate={controls} // Use the animation controls here
                     >
                         {
-                            // Map your items here
-                            gCurrentCase.map((item, index) => (
+                            gRollerItems.returningCase.map((item, index) => (
                                 <CaseItemCard
                                     key={index}
                                     itemName={item.ItemName}

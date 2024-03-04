@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import './Inventory.css';
 
-function InventoryCard({ itemName, itemURL, itemRarity, itemDurability, itemStatTrack, itemValue }) {
+function InventoryCard({ itemName, itemURL, itemRarity, itemDurability, itemStatTrack, itemValue, prop, update, index }) {
 
 	let itemColor = '';
 	switch (itemRarity) {
@@ -48,6 +48,12 @@ function InventoryCard({ itemName, itemURL, itemRarity, itemDurability, itemStat
 	if (itemStatTrack === "True") {
 		itemName = "StatTrak " + itemName;
 	}
+
+	function onSellClick() {
+		prop.userState.balance = (Number(prop.userState.balance) + Number(prop.userState.inventory.at(index).ItemValue));
+		prop.userState.inventory.splice(index, 1);
+		update({});
+	}
   
 	return (
 	  <div className='ItemCard'>
@@ -66,13 +72,15 @@ function InventoryCard({ itemName, itemURL, itemRarity, itemDurability, itemStat
 			}}>
 				${itemValue}
 			</div>
-			<button className='InventorySellButton'>Sell</button>
+			<button className='InventorySellButton' onClick={onSellClick}>Sell</button>
 		</div>
 	  </div>
 	);
   }
 
 function Inventory(props) {
+	const [, forceUpdate] = useState();
+
 	let userInventoryValue = 0;
 
 	props.userState.inventory.forEach((element) => userInventoryValue += Number(element.ItemValue));
@@ -80,33 +88,36 @@ function Inventory(props) {
 	return (
     	<div>
       		<Navbar />
-      	<div>
-			<div className='InventoryUserMetaDataContainer'>
-				<div className='InventoryUserMetaData'>
-					Username: {props.userState.name}
+      		<div>
+				<div className='InventoryUserMetaDataContainer'>
+					<div className='InventoryUserMetaData'>
+						Username: {props.userState.name}
+					</div>
+					<div className='InventoryUserMetaData'>
+						Balance: ${props.userState.balance.toFixed(2)}
+					</div>
+					<div className='InventoryUserMetaData'>
+						Inventory Value: ${userInventoryValue.toFixed(2)}
+					</div>
 				</div>
-				<div className='InventoryUserMetaData'>
-					Balance: ${props.userState.balance.toFixed(2)}
+				<div className='InventoryContainer'>
+					{props.userState.inventory.map((item, index) => (
+        				<InventoryCard
+          					itemName={item.ItemName}
+          					itemURL={item.ItemURL}
+          					itemRarity={item.ItemRarity}
+							itemDurability={item.ItemDurability}
+							itemStatTrack={item.ItemStatTrack}
+							itemValue={item.ItemValue}
+							prop={props}
+							update={forceUpdate}
+							index={index}
+        				/>
+      				))}
 				</div>
-				<div className='InventoryUserMetaData'>
-					Inventory Value: ${userInventoryValue.toFixed(2)}
-				</div>
-			</div>
-		<div className='InventoryContainer'>
-			{props.userState.inventory.map(item => (
-        		<InventoryCard
-          			itemName={item.ItemName}
-          			itemURL={item.ItemURL}
-          			itemRarity={item.ItemRarity}
-					itemDurability={item.ItemDurability}
-					itemStatTrack={item.ItemStatTrack}
-					itemValue={item.ItemValue}
-        		/>
-      		))}
-		</div>
-      </div>
-    </div>
-  );
+      		</div>
+    	</div>
+  	);
 }
 
 export default Inventory;

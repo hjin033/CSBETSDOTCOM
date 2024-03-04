@@ -214,6 +214,7 @@ function CaseOpener(props) {
     const controls = useAnimation();
 
     function handleCaseClick() {
+		props.userState.balance -= 2.49;
 		gRollerItems = GetRollerList(gUserCase);
         setPlayingGame(true);
         

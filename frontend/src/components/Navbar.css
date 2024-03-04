@@ -6,6 +6,8 @@
     align-items: center;
     justify-content: space-around;
     margin:auto;
+    position: relative;
+    gap: .5rem;
 }
 
 .mode {

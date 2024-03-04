@@ -3,12 +3,14 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Rubik",sans-serif;
+  color: #ffffff;
 }
 .game-container {
   display: flex;
   justify-content: space-around; /* Changed to space-around for equal spacing */
   align-items: flex-start; /* Align items to the start of the container */
   padding-top: 50px; /* Add padding at the top */
+  position: relative;
 }
 
 /*
@@ -27,7 +29,7 @@
 }
 */
 .coin-container {
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   padding: 50px;
   border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
@@ -36,7 +38,7 @@
   margin: 0; /* Remove any margin if set */
 }
 .betting-container {
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
@@ -69,11 +71,12 @@
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: black;
 }
 
 .result-message {
   font-size: 20px;
-  color: #101020;
+  color: #FFFFFF;
   margin-bottom: 10px;
 }
 
@@ -86,7 +89,7 @@ body{
   ) fixed;
 }
 .container{
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   width: 400px;
   padding: 50px;
   position: absolute;
@@ -100,7 +103,7 @@ body{
 }
 .stats{
   text-align: right;
-  color: #101020;
+  color: #ffffff;
   font-weight: 500;
   line-height: 25px;
 }
@@ -130,7 +133,7 @@ body{
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  background-image: url('coin-t1.png'); /* Update with your heads image path */
+  content: url('../img/coin-t1.png'); /* Update with your heads image path */
   background-size: cover; /* Ensure the image covers the coin area */
 }
 .tails {
@@ -139,7 +142,7 @@ body{
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  background-image: url('coin-t2.png'); /* Update with your tails image path */
+  content: url('../img/coin-t2.png'); /* Update with your tails image path */
   background-size: cover; /* Ensure the image covers the coin area */
 }
 .tails{
@@ -172,12 +175,12 @@ body{
 button{
   width: 120px;
   padding: 10px 0;
-  border: 2.5px solid #424ae0;
+  /* border: 2.5px solid #424ae0;  */
   border-radius: 5px;
   cursor: pointer;
 }
 #flip-button{
-  background-color: #424ae0;
+  /* background-color: #424ae0; */
   color: #ffffff;
 }
 #flip-button:disabled{

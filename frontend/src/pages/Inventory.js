@@ -196,6 +196,13 @@ function InventoryCard({ itemName, itemURL, itemRarity, itemDurability, itemStat
   ]
 
 function Inventory() {
+<<<<<<< HEAD
+  return (
+    <div>
+      <div className='Background2'></div>
+      <Navbar />
+      <h2>Inventory</h2>
+=======
 	let userInventoryValue = 0;
 	
 	UserInventory.forEach((element) => userInventoryValue += Number(element.ItemValue));
@@ -228,6 +235,7 @@ function Inventory() {
       		))}
 		</div>
       </div>
+>>>>>>> main
     </div>
   );
 }

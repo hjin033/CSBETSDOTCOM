@@ -43,8 +43,20 @@ body {
 	flex-wrap: nowrap;
 	overflow-x: show;
 
+<<<<<<< HEAD
+.ItemCard {
+	width: 190px;
+	height: 234px;
+	background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+	border-radius: 20px;
+	transition: all .3s;
+	float:  left;
+	margin: 10px;
+	position: relative;
+=======
 	/*transform: translateX(-95%);*/
 	transition: transform 10s cubic-bezier(0,.01,0,1.01);
+>>>>>>> main
 }
 .CaseOpenerPage {
 	text-align: center;

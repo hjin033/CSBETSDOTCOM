@@ -189,6 +189,21 @@ for (let i = 0; i < 4; i++) {
 }
 
 function CaseOpener() {
+<<<<<<< HEAD
+  return (
+    <div>
+      <div className='Background2'></div>
+      <Navbar />
+      {Chroma2Case.map(item => (
+        <ItemCard
+          itemName={item.ItemName}
+          itemURL={item.ItemURL}
+          itemRarity={item.ItemRarity}
+        />
+      ))}
+    </div>
+  );
+=======
 	return (
 		<div>
     		<Navbar/>
@@ -225,6 +240,7 @@ function CaseOpener() {
       		</div>
     	</div>
 	);
+>>>>>>> main
 }
 
 export default CaseOpener;

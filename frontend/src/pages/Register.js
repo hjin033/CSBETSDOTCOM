@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const Register = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -25,6 +25,7 @@ const Register = () => {
             });
 
             if (response.ok) {
+                props.userFunction.setName(username);
                 navigate('/home');
             } 
             

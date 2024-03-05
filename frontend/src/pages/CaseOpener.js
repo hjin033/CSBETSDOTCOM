@@ -72,7 +72,7 @@ let Chroma2Case = [
 	  'ItemRarity': 'Classified'
 	},
 	{
-	  'ItemName'  : "M4A1-S Hyper Beast",
+	  'ItemName'  : "M4A1-S | Hyper Beast",
 	  'ItemURL'   : "/assets/Case Item Images/Chroma-2-Case/image_199.jpg",
 	  'ItemRarity': 'Covert'
 	},
@@ -193,20 +193,52 @@ function GetRollerList(generativeCase) {
 	return { returningCase, winningItem };
 }
 
-function GenerateItem(winningItem) {
+function getWearName(durability) {
+	if (durability >= 0.00 && durability < 0.07) return 'Factory New';
+	if (durability >= 0.07 && durability < 0.15) return 'Minimal Wear';
+    if (durability >= 0.15 && durability < 0.38) return 'Field-Tested';
+    if (durability >= 0.38 && durability < 0.45) return 'Well-Worn';
+    if (durability >= 0.45 && durability <= 1.00) return 'Battle-Scarred';
+	throw new Error('Invalid durability value');
+}
+
+function GenerateItem(winningItem, callback) {
+	let durabilityValue = Math.random() * 0.75;
+	let wearName = getWearName(durabilityValue);
+
 	let returningItem = {
 		'ItemName'  		: winningItem.ItemName,
 		'ItemURL'   		: winningItem.ItemURL,
 		'ItemRarity'		: winningItem.ItemRarity,
-		'ItemDurability' 	: String(Math.random() * 0.75),
+		'ItemDurability' 	: durabilityValue,
+		'ItemWearName'		: wearName,
 		'ItemStatTrack'		: String(Math.random()),
-		'ItemValue'			: String((Math.random() * 1000).toFixed(2))
-	}
+		// 'ItemValue'			: String((Math.random() * 1000).toFixed(2))
+	};
 
-	return returningItem;
+	fetch(`http://localhost:4000/api/itemPrice?skin=${encodeURIComponent(returningItem.ItemName)}&wear=${encodeURIComponent(wearName)}`)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error(`HTTP status ${response.status}`);
+			}
+
+			return response.json();
+		})
+
+		.then(data => {
+			returningItem.ItemValue = data.price;
+			callback(returningItem);
+		})
+
+		.catch(error => {
+			console.error('Error fetching item price:', error);
+			callback(null);
+		});
+
+	//return returningItem;
 }
 
-let gUserCase = KilowattCase;
+let gUserCase = Chroma2Case;
 let gRollerItems = GetRollerList(gUserCase);
 
 function CaseOpener(props) {
@@ -222,12 +254,23 @@ function CaseOpener(props) {
 
         controls.start({ x: -38500, transition: { ease: "easeOut", duration: 5 } })
             .then(() => {
-                setPlayingGame(false);
-				alert('You won a ' + gRollerItems.winningItem.ItemName);
-				props.userState.inventory.push(GenerateItem(gRollerItems.winningItem));
-            }
-		);
-    }
+				GenerateItem(gRollerItems.winningItem, (generatedItem) => {
+					if (generatedItem) {
+						alert('You won a ' + generatedItem.ItemName + ' worth ' + generatedItem.ItemValue);
+						props.userState.inventory.push(generatedItem);
+					}
+
+					else {
+						alert('There was an error fetching the item price.');
+					}
+
+					setPlayingGame(false);
+				});
+                //setPlayingGame(false);
+				//alert('You won a ' + gRollerItems.winningItem.ItemName);
+				//props.userState.inventory.push(GenerateItem(gRollerItems.winningItem));
+            });
+    	}
 
     return (
         <>

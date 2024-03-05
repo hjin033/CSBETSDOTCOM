@@ -20,24 +20,26 @@ function Crash(props) {
       interval = setInterval(() => {
         setMultiplier((prev) => {
           const randomChance = Math.random();
-          if (randomChance < 0.05) {
+          if (randomChance < 0.02) {
             clearInterval(interval);
             setCrashed(true);
             setGameStarted(false);
             return prev;
           }
-          const newMultiplier = prev + 0.01;
+
+          const growthRate = 1.05; // Multiplier increases by 5% each time
+          const newMultiplier = prev * growthRate; 
           setGraphData((graphData) => [...graphData, newMultiplier]);
           setEstimatedWinnings((betAmount * newMultiplier).toFixed(2));
           return newMultiplier;
         });
-      }, 600);
+      }, 600); // This interval can be adjusted for game pacing
     } else {
       setGraphData([]);
       setEstimatedWinnings(0);
     }
     return () => clearInterval(interval);
-  }, [gameStarted, crashed, betAmount]);
+  }, [gameStarted, crashed, betAmount, startTime]);
 
   const startGame = () => {
     if (parseFloat(betAmount) <= 0 || isNaN(parseFloat(betAmount))) {

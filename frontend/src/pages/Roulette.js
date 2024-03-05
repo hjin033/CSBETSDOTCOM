@@ -47,7 +47,7 @@ const data = [
 
 
 
-function Roulette() {
+function Roulette(props) {
   const [game, startGame] = useState(false)
   const [win, setWin] = useState(0)
   const [red, setRed] = useState(0)
@@ -59,12 +59,15 @@ function Roulette() {
   function spinHandleClick () {
     if (color === 'Red') {
       setResult("$" + red + " on red");
+      props.userFunction.setBalance(props.userState.balance - red)
     }
     else if (color === 'Green') {
       setResult("$" + green + " on green");
+      props.userFunction.setBalance(props.userState.balance - green)
     }
     else if (color === 'Black') {
       setResult("$" + black + " on black");
+      props.userFunction.setBalance(props.userState.balance - black)
     }
     startGame(!game);
     rng();
@@ -138,26 +141,28 @@ function Roulette() {
       win === 37 )){
       return true;
     }
-    console.log('hi')
     return false;
   };
 
   function displayResult () {
-    console.log(win);
-    console.log(winner());
-    console.log(red);
-    console.log(green);
-    console.log(black);
-    console.log(color);
+    
     if (winner()) {
+      var winningAmount;
       if (color === 'Green') {
-        setResult('+$' + (green * 18).toFixed(2));
+        winningAmount = (green * 18);
+        setResult('+$' + winningAmount.toFixed(2));
+        props.userFunction.setBalance(props.userState.balance + winningAmount);
+        
       }
       else if (color === 'Red') {
-        setResult('+$' + (red * 1.8).toFixed(2));
+        winningAmount = (red * 1.8);
+        setResult('+$' + winningAmount.toFixed(2));
+        props.userFunction.setBalance(props.userState.balance + winningAmount)
       }
       else if (color === 'Black') {
-        setResult('+$' + (black * 1.8).toFixed(2));
+        winningAmount = (black * 1.8);
+        setResult('+$' + winningAmount.toFixed(2));
+        props.userFunction.setBalance(props.userState.balance + winningAmount)
       }
     }
     else {
@@ -168,7 +173,7 @@ function Roulette() {
   return (
     <div>
       <div className='Background2'></div>
-      <Navbar />
+      <Navbar userState = { props.userState } userFunction = { props.userFunction }/>
       <div className='main'>
         <div className='Rwheel'>
           <Wheel

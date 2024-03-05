@@ -3,21 +3,21 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import './Coinflip.css'; // Make sure this path is correct
 
-function Coinflip() {
+function Coinflip(props) {
   const [headsCount, setHeadsCount] = useState(0);
   const [tailsCount, setTailsCount] = useState(0);
   const [coinAnimation, setCoinAnimation] = useState('');
-  const [Wallet, setWallet] = useState(10000); // Starting Wallet amount
+  //const [Wallet, setWallet] = useState(10000); // Starting Wallet amount
   const [bet, setBet] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [resultMessage, setResultMessage] = useState('');
 
   const flipCoin = () => {
-    if (bet <= 0 || bet > Wallet) {
+    if (bet <= 0) {
       alert('Invalid bet amount.');
       return;
     }
-
+    props.userFunction.setBalance(props.userState.balance - bet);
     const isHeads = Math.random() < 0.5;
     setCoinAnimation(isHeads ? 'spin-heads 3s forwards' : 'spin-tails 3s forwards'); // Start the coin animation
 
@@ -27,20 +27,18 @@ function Coinflip() {
       if (isHeads) {
         setHeadsCount(headsCount + 1);
         if (selectedOption === 'Heads') {
-          setWallet(Wallet + bet * 0.5);
-          outcomeMessage = `YOU WIN! You've won ${bet * 0.5} $.`;
+          props.userFunction.setBalance(props.userState.balance + bet * 0.5);
+          outcomeMessage = `YOU WIN! You've won ${bet * 1.5} $.`;
         } else {
-          setWallet(Wallet - bet);
           outcomeMessage = `YOU LOSE! You've lost ${bet} $.`;
         }
       } else {
         setTailsCount(tailsCount + 1);
         if (selectedOption === 'Tails') {
-          setWallet(Wallet + bet * 0.5);
-          outcomeMessage = `YOU WIN! You've won ${bet * 0.5} Wallet.`;
+          props.userFunction.setBalance(props.userState.balance + bet * 0.5);
+          outcomeMessage = `YOU WIN! You've won $${bet * 1.5}.`;
         } else {
-          setWallet(Wallet - bet);
-          outcomeMessage = `YOU LOSE! You've lost ${bet} Wallet.`;
+          outcomeMessage = `YOU LOSE! You've lost $${bet}.`;
         }
       }
       setCoinAnimation(''); // Reset the animation
@@ -74,7 +72,7 @@ function Coinflip() {
   return (
     <div>
       <div className='Background2'></div>
-      <Navbar />
+      <Navbar userState = { props.userState } userFunction = { props.userFunction }/>
       <div className="game-container">
         
         {/* Coin flip container */}
@@ -95,9 +93,6 @@ function Coinflip() {
 
         {/* Betting container */}
         <div className="betting-container">
-          <div className="betting-stats">
-            <div>Wallet ($): {Wallet}</div>
-          </div>
           <div className="betting-options">
             <button onClick={() => handleOptionSelection('Heads')} disabled={selectedOption === 'Heads'}>Heads</button>
             <button onClick={() => handleOptionSelection('Tails')} disabled={selectedOption === 'Tails'}>Tails</button>

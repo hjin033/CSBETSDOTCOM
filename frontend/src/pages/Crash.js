@@ -4,7 +4,7 @@ import './Crash.css';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';// Make sure to run `npm install react-chartjs-2 chart.js` and `run build` before running `npm start`
 
-function Crash() {
+function Crash(props) {
   const [betAmount, setBetAmount] = useState('');
   const [multiplier, setMultiplier] = useState(1.0);
   const [gameStarted, setGameStarted] = useState(false);
@@ -44,6 +44,7 @@ function Crash() {
       alert('Please enter a bet amount greater than 0.');
       return;
     }
+    props.userFunction.setBalance(props.userState.balance - betAmount);
     setCrashed(false);
     setMultiplier(1.0);
     setGameStarted(true);
@@ -57,6 +58,7 @@ function Crash() {
     }
     const duration = ((Date.now() - startTime) / 1000).toFixed(2);
     alert(`You won ${estimatedWinnings} in ${duration} seconds!`);
+    props.userFunction.setBalance(props.userState.balance + (betAmount * multiplier));
     setGameStarted(false);
     // Handle cash out logic here, such as updating user's balance
   };
@@ -87,7 +89,7 @@ function Crash() {
   return (
     <div>
       <div className='Background2'></div>
-      <Navbar />
+      <Navbar userState = { props.userState } userFunction = { props.userFunction }/>
       <div className="crash-container">
         <div className="game-panel">
           <Line data={data} />

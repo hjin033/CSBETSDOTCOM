@@ -232,7 +232,7 @@ function CaseOpener(props) {
     return (
         <>
             <div className='Background2'></div>
-            <Navbar/>
+            <Navbar userState = { props.userState } userFunction = { props.userFunction }/>
             <div className='ButtonContainer'>
                 <button className='OpenCaseButton' onClick={handleCaseClick} disabled={playingGame}>Open Case!</button>
             </div>

@@ -42,3 +42,13 @@
 .mode:hover::after{
     width: 100%;
 }
+
+.balanceBox {
+    background-color: gray;
+    width:75px;
+    margin-top:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:5px;
+    border-radius: 7px;
+}

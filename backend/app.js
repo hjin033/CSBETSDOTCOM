@@ -39,6 +39,30 @@ app.post('/register', async (req, res) => {
     }
 });
 
+app.get('/api/itemPrice', async (req, res) => {
+    try {
+        const { skin, wear } = req.query;
+        const itemPriceQuery = await pool.query(
+            'SELECT price FROM static_items WHERE skin = $1::varchar AND wear = $2::varchar',
+            [skin, wear]
+        );
+
+        if (itemPriceQuery.rows.length > 0) {
+            const itemPrice = itemPriceQuery.rows[0].price;
+            res.json({ price: itemPrice });
+        }
+
+        else {
+            res.status(404).json({ message: "Item not found" });
+        }
+    }
+
+    catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
 app.listen(4000, () => {
     console.log('Server started on port 4000');
 });

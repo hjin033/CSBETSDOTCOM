@@ -564,6 +564,11 @@ let Cases = {
 				'ItemName'  : "AWP | Lightning Strike",
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case/image_199.jpg",
 				'ItemRarity': 'Covert'
+			  },
+			  {
+				'ItemName'  : "Special Item",
+				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
+				'ItemRarity': 'Contraband'
 			  }
 		],
 		'Knives'	: [
@@ -1072,8 +1077,9 @@ function PopUpComponent({winningItem, onClick}) {
 						src={winningItem.ItemURL}
 						alt="missing."
 						style={{
-							scale: '90%',
-							position: 'absolute'
+							width: '100%',
+							position: 'inherit',
+							top: '3em'
 						}}
 					/>
 				</div>

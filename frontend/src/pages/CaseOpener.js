@@ -1070,6 +1070,7 @@ function PopUpComponent({winningItem, onClick}) {
 					{winningItem.ItemName}
 					<img
 						src={winningItem.ItemURL}
+						alt="missing."
 						style={{
 							scale: '90%',
 							position: 'absolute'

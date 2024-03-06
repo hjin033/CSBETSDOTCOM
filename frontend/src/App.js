@@ -12,7 +12,7 @@ import Inventory from './pages/Inventory';
 function App() {
   const [balance, setBalance] = useState(1000);
   const [inventory, setInventory] = useState([]);
-  const [name, setName] = useState('Timmy');
+  const [name, setName] = useState('');
 
   let userState = {
     balance: balance,
@@ -31,8 +31,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Login userState = { userState } userFunction = { userFunction }/>} />
+        <Route path="/register" element={<Register userState = { userState } userFunction = { userFunction }/>} />
         <Route path="/home" element={<Home />} />
         <Route path="/coinflip" element={<Coinflip userState = { userState } userFunction = { userFunction }/>} />
         <Route path="/roulette" element={<Roulette userState = { userState } userFunction = { userFunction }/>} />

@@ -12,18 +12,16 @@ body {
 	  var(--g3) 0 calc(1.73 * var(--s)) #1e1e1e;
 	background-size: calc(2 * var(--s)) calc(3.46 * var(--s));
 }
-
 .ButtonContainer {
 	position: relative;
 	text-align: center;
 	padding: 1em;
 }
-
 .OpenCaseButton {
 	border-radius: 0.5em;
 	background-color: #1e1e1e;
+	width: 13em;
 }
-
 .ScrollerBackgroundContainer {
 	position: absolute;
 	display: flex;
@@ -35,14 +33,12 @@ body {
 	/* margin-left: 50vw; */
 	/* margin-right: 50vw; */
 }
-
 .ScrollerContainer {
 	position: relative;
 	display: flex;
 	overflow-x: show;
 	height: 100%;
 }
-
 .Indicator {
 	position: absolute;
 	margin-left: 50%;
@@ -50,4 +46,44 @@ body {
 	background-color: red;
 	width: 5px;
 	height: 100%;
+}
+.CaseContainer {
+	position: relative;
+	/* background-color: white; */
+	margin-top: 15rem;
+	height: 12em;
+	width: 75em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.CaseSelections {
+	width: 17em;
+	height: 13em;
+	background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+	border-radius: 20px;
+	transition: all .3s;
+	float:  left;
+	margin: 10px;
+}
+
+.CaseSelections2 {
+	width: 17em;
+	height: 13em;
+	background-color: #1a1a1a;
+	border-radius:15px;
+	transition: all .2s;
+	float: left;
+	padding: 5px;
+	text-align: center;
+}
+
+.CaseSelections:hover {
+	box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+}
+
+.CaseSelections2:hover {
+	transform: scale(0.98);
+	border-radius: 20px;
 }

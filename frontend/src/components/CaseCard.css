@@ -1,0 +1,20 @@
+.CaseCard {
+	width: 15em;
+	height: 10em;
+	background-color:#1a1a1a;
+	border-radius: 0.5em;
+	margin: 0em;
+	align-self: center;
+	flex-shrink: 0;
+	flex-grow: 0;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.CaseImage {
+	object-fit:fit;
+	height:95%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -12,7 +12,7 @@ let Cases = {
 		'CaseName'  : "Kilowatt Case",
 		'CaseURL'   : "/assets/Case Images/image_188.jpg",
 		'CasePrice'	: '3.41',
-		'CaseItems': [
+		'CaseItems'	: [
 			{
 				'ItemName'  : "Dual Berettas | Hideout",
 				'ItemURL'   : "/assets/Case Item Images/Kilowatt-Case/image_229.jpg",
@@ -103,13 +103,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			}
+		],
+		'Knives'	: [
+
 		]
 	},
 	'Chroma Case': {
 		'CaseName'  : "Chroma Case",
 		'CaseURL'   : "/assets/Case Images/image_217.jpg",
 		'CasePrice'	: '2.95',
-		'CaseItems': [
+		'CaseItems'	: [
 			  {
 				'ItemName'  : "SCAR-20 | Grotto",
 				'ItemURL'   : "/assets/Case Item Images/Chroma-Case/image_223.jpg",
@@ -185,13 +188,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'Chroma 2 Case': {
 		'CaseName'  : "Chroma 2 Case",
 		'CaseURL'   : "/assets/Case Images/image_216.jpg",
 		'CasePrice'	: '2.46',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "AK-47 | Elite Build",
 				'ItemURL'   : "/assets/Case Item Images/Chroma-2-Case/image_217.jpg",
@@ -272,13 +278,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'Chroma 3 Case': {
 		'CaseName'  : "Chroma 3 Case",
 		'CaseURL'   : "/assets/Case Images/image_211.jpg",
 		'CasePrice'	: '2.23',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "Sawed-Off | Fubar",
 				'ItemURL'   : "/assets/Case Item Images/Chroma-3-Case/image_231.jpg",
@@ -369,13 +378,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'CS:GO Weapon Case': {
 		'CaseName'  : "CS:GO Weapon Case",
 		'CaseURL'   : "/assets/Case Images/image_229.jpg",
 		'CasePrice'	: '83.56',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "MP7 | Skulls",
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case/image_215.jpg",
@@ -421,13 +433,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case/image_199.jpg",
 				'ItemRarity': 'Covert'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'CS:GO Weapon Case 2': {
 		'CaseName'  : "CS:GO Weapon Case 2",
 		'CaseURL'   : "/assets/Case Images/image_226.jpg",
 		'CasePrice'	: '12.50',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "P250 | Hive",
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case-2/image_219.jpg",
@@ -493,13 +508,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'CS:GO Weapon Case 3': {
 		'CaseName'  : "CS:GO Weapon Case 3",
 		'CaseURL'   : "/assets/Case Images/image_223.jpg",
 		'CasePrice'	: '6.84',
-		'CaseItems': [
+		'CaseItems'	: [
 			  {
 				'ItemName'  : "P2000 | Red FragCam",
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case-3/image_221.jpg",
@@ -565,13 +583,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'Operation Bravo Case': {
 		'CaseName'  : "Operation Bravo Case",
 		'CaseURL'   : "/assets/Case Images/image_227.jpg",
 		'CasePrice'	: '44.27',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "G3SG1 | Demeter",
 				'ItemURL'   : "/assets/Case Item Images/Operation-Bravo-Case/image_225.jpg",
@@ -652,6 +673,9 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 }
@@ -676,6 +700,49 @@ function getWearName(durability) {
     if (durability >= 0.38 && durability < 0.45) return 'Well-Worn';
     if (durability >= 0.45 && durability <= 1.00) return 'Battle-Scarred';
 	throw new Error('Invalid durability value');
+}
+
+function GenerateFakeItem(winningItem) {
+	let durabilityValue = Math.random() * 0.75;
+	let wearName = getWearName(durabilityValue);
+
+	let returningItem = {
+		'ItemName'  		: winningItem.ItemName,
+		'ItemURL'   		: winningItem.ItemURL,
+		'ItemRarity'		: winningItem.ItemRarity,
+		'ItemDurability' 	: durabilityValue,
+		'ItemWearName'		: wearName,
+		'ItemStatTrack'		: String(Math.random()),
+		'ItemValue'			: '-'
+	};
+
+	let fakeItemValue = Math.random();
+
+	if (winningItem.ItemRarity === 'Mil-Spec')
+		fakeItemValue = fakeItemValue * 2.5;
+	if (winningItem.ItemRarity === 'Restricted')
+		fakeItemValue = fakeItemValue * 10 + 2.5;
+	if (winningItem.ItemRarity === 'Classified')
+		fakeItemValue = fakeItemValue * 30 + 20;
+	if (winningItem.ItemRarity === 'Covert')
+		fakeItemValue = fakeItemValue * 190 + 60;
+	if (winningItem.ItemRarity === 'Contraband')
+		fakeItemValue = fakeItemValue * 900 + 250;
+	
+	if (wearName === 'Factory New')
+		fakeItemValue = fakeItemValue * 2.0;
+	if (wearName === 'Minimal Wear')
+		fakeItemValue = fakeItemValue * 1.5;
+    if (wearName === 'Field-Tested')
+		fakeItemValue = fakeItemValue * 1.0;
+    if (wearName === 'Well-Worn')
+		fakeItemValue = fakeItemValue * 0.75;
+    if (wearName === 'Battle-Scarred')
+		fakeItemValue = fakeItemValue * 0.50;
+
+
+	returningItem['ItemValue'] = fakeItemValue.toFixed(2);
+	return returningItem;
 }
 
 function GenerateItem(winningItem, callback) {
@@ -708,7 +775,7 @@ function GenerateItem(winningItem, callback) {
 
 		.catch(error => {
 			console.error('Error fetching item price:', error);
-			callback(null);
+			callback(GenerateFakeItem(winningItem));
 		});
 
 	//return returningItem;
@@ -732,7 +799,7 @@ function CaseOpener(props) {
             .then(() => {
 				GenerateItem(gRollerItems.winningItem, (generatedItem) => {
 					if (generatedItem) {
-						alert('You won a ' + generatedItem.ItemName + ' worth ' + generatedItem.ItemValue);
+						alert('You won a ' + getWearName(generatedItem.ItemDurability) + ' ' + generatedItem.ItemName + ' worth ' + generatedItem.ItemValue);
 						props.userState.inventory.push(generatedItem);
 					}
 

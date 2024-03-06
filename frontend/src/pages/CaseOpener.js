@@ -4,7 +4,6 @@ import { motion, useAnimation } from "framer-motion";
 import Navbar from '../components/Navbar'
 import CaseItemCard from '../components/CaseItemCard';
 import CaseCard from '../components/CaseCard';
-import ClosableDialog from '../components/ClosableDialog';
 import './CaseOpener.css';
 
 let Knives = [
@@ -922,6 +921,7 @@ let gRollerItems = GetRollerList(Cases['Kilowatt Case'].CaseItems);
 function CaseOpener(props) {
     const [playingGame, setPlayingGame] = useState(false);
 	const [chosenCase, setChosenCase] = useState('Kilowatt Case');
+	const [isPopUpVisible, setPopUpVisible] = useState(false);
 	const audioRef = useRef(null);
 	const [src, setSrc] = useState("/assets/audio/spin.mp3");
 
@@ -943,6 +943,8 @@ function CaseOpener(props) {
 	};
 
     function handleCaseClick() {
+		setPopUpVisible(false);
+
 		props.userState.balance -= (2.49 + Number(Cases[chosenCase].CasePrice));
 		gRollerItems = GetRollerList(Cases[chosenCase].CaseItems);
         setPlayingGame(true);
@@ -952,7 +954,7 @@ function CaseOpener(props) {
         
         controls.set({ x: 0 });
 
-        controls.start({ x: -38500, transition: { ease: "easeOut", duration: 6 } })
+        controls.start({ x: -38500, transition: { ease: [0,.35,0,1], duration: 6 } })
             .then(() => {
 				GenerateItem(gRollerItems.winningItem, (generatedItem) => {
 					if (generatedItem.ItemRarity === 'Mil-Spec') {
@@ -976,11 +978,13 @@ function CaseOpener(props) {
 						changeAudioSourceAndPlay("/assets/audio/goldopen.mp3");
 					}
 					if (generatedItem) {
-						alert('You won a ' + getWearName(generatedItem.ItemDurability) + ' ' + generatedItem.ItemName + ' worth ' + generatedItem.ItemValue);
+						//alert('You won a ' + getWearName(generatedItem.ItemDurability) + ' ' + generatedItem.ItemName + ' worth ' + generatedItem.ItemValue);
 						props.userState.inventory.push(generatedItem);
 					} else {
 						alert('There was an error fetching the item price.');
 					}
+
+					setPopUpVisible(true);
 
 					setPlayingGame(false);
 				});
@@ -1021,12 +1025,15 @@ function CaseOpener(props) {
 								<div className='CaseSelections2' style={{
 									borderColor: 'yellow',
 									borderWidth: caseName === chosenCase ? '1px' : '0px'
-								}} onClick={
-									playingGame ? undefined : () => {
-										audioRef.current.pause();
-										changeAudioSourceAndPlay("/assets/audio/buttonclick.mp3")
-										setChosenCase(caseName);
-										gRollerItems = GetRollerList(caseDetail.CaseItems); 
+								}} onClick={()=>{
+										if (!playingGame) {
+											if (!isPopUpVisible) {
+												audioRef.current.pause();
+												changeAudioSourceAndPlay("/assets/audio/buttonclick.mp3")
+												setChosenCase(caseName);
+												gRollerItems = GetRollerList(caseDetail.CaseItems); 
+											}
+										}
 									}
 								}>
 									<CaseCard
@@ -1038,11 +1045,39 @@ function CaseOpener(props) {
 							</div>)
 						})
 					}
-					
 				</div>
+					{
+						isPopUpVisible && (
+  							<PopUpComponent
+    							winningItem={gRollerItems.winningItem} // Corrected prop passing
+    							onClick={() => setPopUpVisible(!isPopUpVisible)} // Ensure PopUpComponent handles this
+  							/>
+						)
+					}
             </div>
         </>
     );
+}
+
+function PopUpComponent({winningItem, onClick}) {
+	return (
+			<div className='PopUpContainer' onClick={onClick}>
+				<img
+					src="/assets/Popup Case.gif"
+					alt="Pop Up Gif"
+				/>
+				<div className='PopUp'>
+					{winningItem.ItemName}
+					<img
+						src={winningItem.ItemURL}
+						style={{
+							scale: '90%',
+							position: 'absolute'
+						}}
+					/>
+				</div>
+			</div>	
+	);
 }
 
 export default CaseOpener;

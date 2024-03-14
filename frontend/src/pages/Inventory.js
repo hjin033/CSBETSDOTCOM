@@ -87,6 +87,7 @@ function Inventory(props) {
 
 	return (
     	<div>
+			<div className='Background2'></div>
       		<Navbar userState = { props.userState } userFunction = { props.userFunction } />
       		<div>
 				<div className='InventoryUserMetaDataContainer'>

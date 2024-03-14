@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, useAnimation } from "framer-motion";
 
 import Navbar from '../components/Navbar'
@@ -6,13 +6,145 @@ import CaseItemCard from '../components/CaseItemCard';
 import CaseCard from '../components/CaseCard';
 import './CaseOpener.css';
 
+let Knives = [
+	{
+		'ItemName'  : "Karambit | Doppler",
+		'ItemURL'   : "/assets/Knife Images/image_188.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Butterfly Knife | Slaughter",
+		'ItemURL'   : "/assets/Knife Images/image_189.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "M9 Bayonet | Marble Fade",
+		'ItemURL'   : "/assets/Knife Images/image_191.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Talon Knife | Fade",
+		'ItemURL'   : "/assets/Knife Images/image_192.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Karambit | Slaughter",
+		'ItemURL'   : "/assets/Knife Images/image_193.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "M9 Bayonet | ★ (Vanilla)",
+		'ItemURL'   : "/assets/Knife Images/image_194.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Karambit | ★ (Vanilla)",
+		'ItemURL'   : "/assets/Knife Images/image_195.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Butterfly Knife | Autotronic",
+		'ItemURL'   : "/assets/Knife Images/image_196.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Karambit | Tiger Tooth",
+		'ItemURL'   : "/assets/Knife Images/image_197.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Karambit | Autotronic",
+		'ItemURL'   : "/assets/Knife Images/image_198.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Nomad Knife | Fade",
+		'ItemURL'   : "/assets/Knife Images/image_199.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "M9 Bayonet | Doppler",
+		'ItemURL'   : "/assets/Knife Images/image_200.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Butterfly Knife | Damascus Steel",
+		'ItemURL'   : "/assets/Knife Images/image_201.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Skeleton Knife | Slaughter",
+		'ItemURL'   : "/assets/Knife Images/image_202.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Butterfly Knife | Blue Steel",
+		'ItemURL'   : "/assets/Knife Images/image_203.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "M9 Bayonet | Autotronic",
+		'ItemURL'   : "/assets/Knife Images/image_205.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "M9 Bayonet | Slaughter",
+		'ItemURL'   : "/assets/Knife Images/image_206.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Talon Knife | Doppler",
+		'ItemURL'   : "/assets/Knife Images/image_207.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Bayonet | Gamma Doppler",
+		'ItemURL'   : "/assets/Knife Images/image_208.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "M9 Bayonet | Tiger Tooth",
+		'ItemURL'   : "/assets/Knife Images/image_209.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Butterfly Knife | Black Laminate",
+		'ItemURL'   : "/assets/Knife Images/image_210.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Karambit | Black Laminate",
+		'ItemURL'   : "/assets/Knife Images/image_211.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Butterfly Knife | Lore",
+		'ItemURL'   : "/assets/Knife Images/image_212.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Butterfly Knife | Case Hardened",
+		'ItemURL'   : "/assets/Knife Images/image_213.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Kukri Knife | Slaughter",
+		'ItemURL'   : "/assets/Knife Images/image_215.jpg",
+		'ItemRarity': 'Contraband'
+	},
+	{
+		'ItemName'  : "Butterfly Knife | Freehand",
+		'ItemURL'   : "/assets/Knife Images/image_217.jpg",
+		'ItemRarity': 'Contraband'
+	}
+]
 
 let Cases = {
 	'Kilowatt Case': {
 		'CaseName'  : "Kilowatt Case",
 		'CaseURL'   : "/assets/Case Images/image_188.jpg",
 		'CasePrice'	: '3.41',
-		'CaseItems': [
+		'CaseItems'	: [
 			{
 				'ItemName'  : "Dual Berettas | Hideout",
 				'ItemURL'   : "/assets/Case Item Images/Kilowatt-Case/image_229.jpg",
@@ -103,13 +235,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			}
+		],
+		'Knives'	: [
+
 		]
 	},
 	'Chroma Case': {
 		'CaseName'  : "Chroma Case",
 		'CaseURL'   : "/assets/Case Images/image_217.jpg",
 		'CasePrice'	: '2.95',
-		'CaseItems': [
+		'CaseItems'	: [
 			  {
 				'ItemName'  : "SCAR-20 | Grotto",
 				'ItemURL'   : "/assets/Case Item Images/Chroma-Case/image_223.jpg",
@@ -185,13 +320,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'Chroma 2 Case': {
 		'CaseName'  : "Chroma 2 Case",
 		'CaseURL'   : "/assets/Case Images/image_216.jpg",
 		'CasePrice'	: '2.46',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "AK-47 | Elite Build",
 				'ItemURL'   : "/assets/Case Item Images/Chroma-2-Case/image_217.jpg",
@@ -272,13 +410,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'Chroma 3 Case': {
 		'CaseName'  : "Chroma 3 Case",
 		'CaseURL'   : "/assets/Case Images/image_211.jpg",
 		'CasePrice'	: '2.23',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "Sawed-Off | Fubar",
 				'ItemURL'   : "/assets/Case Item Images/Chroma-3-Case/image_231.jpg",
@@ -369,13 +510,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'CS:GO Weapon Case': {
 		'CaseName'  : "CS:GO Weapon Case",
 		'CaseURL'   : "/assets/Case Images/image_229.jpg",
 		'CasePrice'	: '83.56',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "MP7 | Skulls",
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case/image_215.jpg",
@@ -420,14 +564,22 @@ let Cases = {
 				'ItemName'  : "AWP | Lightning Strike",
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case/image_199.jpg",
 				'ItemRarity': 'Covert'
+			  },
+			  {
+				'ItemName'  : "Special Item",
+				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
+				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'CS:GO Weapon Case 2': {
 		'CaseName'  : "CS:GO Weapon Case 2",
 		'CaseURL'   : "/assets/Case Images/image_226.jpg",
 		'CasePrice'	: '12.50',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "P250 | Hive",
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case-2/image_219.jpg",
@@ -493,13 +645,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'CS:GO Weapon Case 3': {
 		'CaseName'  : "CS:GO Weapon Case 3",
 		'CaseURL'   : "/assets/Case Images/image_223.jpg",
 		'CasePrice'	: '6.84',
-		'CaseItems': [
+		'CaseItems'	: [
 			  {
 				'ItemName'  : "P2000 | Red FragCam",
 				'ItemURL'   : "/assets/Case Item Images/CSGO-Weapon-Case-3/image_221.jpg",
@@ -565,13 +720,16 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 	'Operation Bravo Case': {
 		'CaseName'  : "Operation Bravo Case",
 		'CaseURL'   : "/assets/Case Images/image_227.jpg",
 		'CasePrice'	: '44.27',
-		'CaseItems': [
+		'CaseItems' : [
 			  {
 				'ItemName'  : "G3SG1 | Demeter",
 				'ItemURL'   : "/assets/Case Item Images/Operation-Bravo-Case/image_225.jpg",
@@ -652,6 +810,9 @@ let Cases = {
 				'ItemURL'   : "/assets/Case Item Images/misc/image_194.jpg",
 				'ItemRarity': 'Contraband'
 			  }
+		],
+		'Knives'	: [
+
 		]
 	},
 }
@@ -659,6 +820,11 @@ let Cases = {
 function GetRollerList(generativeCase) {
 	let returningCase = [];
 	let winningItem = generativeCase.at(Math.random() * generativeCase.length);
+
+	if (winningItem.ItemName === "Special Item") {
+		winningItem = Knives.at(Math.random() * Knives.length);
+	}
+
 	for (let i = 0; i < 156; i++) {
 		returningCase.push(generativeCase.at(Math.random() * 7));
 	}
@@ -676,6 +842,49 @@ function getWearName(durability) {
     if (durability >= 0.38 && durability < 0.45) return 'Well-Worn';
     if (durability >= 0.45 && durability <= 1.00) return 'Battle-Scarred';
 	throw new Error('Invalid durability value');
+}
+
+function GenerateFakeItem(winningItem) {
+	let durabilityValue = Math.random() * 0.75;
+	let wearName = getWearName(durabilityValue);
+
+	let returningItem = {
+		'ItemName'  		: winningItem.ItemName,
+		'ItemURL'   		: winningItem.ItemURL,
+		'ItemRarity'		: winningItem.ItemRarity,
+		'ItemDurability' 	: durabilityValue,
+		'ItemWearName'		: wearName,
+		'ItemStatTrack'		: String(Math.random()),
+		'ItemValue'			: '-'
+	};
+
+	let fakeItemValue = Math.random();
+
+	if (winningItem.ItemRarity === 'Mil-Spec')
+		fakeItemValue = fakeItemValue * 2.5;
+	if (winningItem.ItemRarity === 'Restricted')
+		fakeItemValue = fakeItemValue * 10 + 2.5;
+	if (winningItem.ItemRarity === 'Classified')
+		fakeItemValue = fakeItemValue * 30 + 20;
+	if (winningItem.ItemRarity === 'Covert')
+		fakeItemValue = fakeItemValue * 190 + 60;
+	if (winningItem.ItemRarity === 'Contraband')
+		fakeItemValue = fakeItemValue * 900 + 250;
+	
+	if (wearName === 'Factory New')
+		fakeItemValue = fakeItemValue * 2.0;
+	if (wearName === 'Minimal Wear')
+		fakeItemValue = fakeItemValue * 1.5;
+    if (wearName === 'Field-Tested')
+		fakeItemValue = fakeItemValue * 1.0;
+    if (wearName === 'Well-Worn')
+		fakeItemValue = fakeItemValue * 0.75;
+    if (wearName === 'Battle-Scarred')
+		fakeItemValue = fakeItemValue * 0.50;
+
+
+	returningItem['ItemValue'] = fakeItemValue.toFixed(2);
+	return returningItem;
 }
 
 function GenerateItem(winningItem, callback) {
@@ -708,10 +917,8 @@ function GenerateItem(winningItem, callback) {
 
 		.catch(error => {
 			console.error('Error fetching item price:', error);
-			callback(null);
+			callback(GenerateFakeItem(winningItem));
 		});
-
-	//return returningItem;
 }
 
 let gRollerItems = GetRollerList(Cases['Kilowatt Case'].CaseItems);
@@ -719,37 +926,79 @@ let gRollerItems = GetRollerList(Cases['Kilowatt Case'].CaseItems);
 function CaseOpener(props) {
     const [playingGame, setPlayingGame] = useState(false);
 	const [chosenCase, setChosenCase] = useState('Kilowatt Case');
+	const [isPopUpVisible, setPopUpVisible] = useState(false);
+	const audioRef = useRef(null);
+	const [src, setSrc] = useState("/assets/audio/spin.mp3");
+
     const controls = useAnimation();
 
+	const changeAudioSourceAndPlay = async (newSrc) => {
+		setSrc(newSrc);
+		audioRef.current.load();
+
+		await new Promise((resolve) => {
+			audioRef.current.onloadeddata = resolve;
+		});
+
+		try {
+			await audioRef.current.play();
+		} catch (error) {
+			console.error('Error playing the audio: ', error);
+		}
+	};
+
     function handleCaseClick() {
+		setPopUpVisible(false);
+
 		props.userState.balance -= (2.49 + Number(Cases[chosenCase].CasePrice));
 		gRollerItems = GetRollerList(Cases[chosenCase].CaseItems);
         setPlayingGame(true);
+
+		audioRef.current.pause();
+		changeAudioSourceAndPlay("/assets/audio/spin.mp3");
         
         controls.set({ x: 0 });
 
-        controls.start({ x: -38500, transition: { ease: "easeOut", duration: 5 } })
+        controls.start({ x: -38500, transition: { ease: [0,.35,0,1], duration: 6 } })
             .then(() => {
 				GenerateItem(gRollerItems.winningItem, (generatedItem) => {
-					if (generatedItem) {
-						alert('You won a ' + generatedItem.ItemName + ' worth ' + generatedItem.ItemValue);
-						props.userState.inventory.push(generatedItem);
+					if (generatedItem.ItemRarity === 'Mil-Spec') {
+						audioRef.current.pause();
+						changeAudioSourceAndPlay("/assets/audio/milspecopen.mp3");
+					}	
+					if (generatedItem.ItemRarity === 'Restricted') {
+						audioRef.current.pause();
+						changeAudioSourceAndPlay("/assets/audio/restrictedopen.mp3");
+					}	
+					if (generatedItem.ItemRarity === 'Classified') {
+						audioRef.current.pause();
+						changeAudioSourceAndPlay("/assets/audio/classifiedopen.mp3");
 					}
-
-					else {
+					if (generatedItem.ItemRarity === 'Covert') {
+						audioRef.current.pause();
+						changeAudioSourceAndPlay("/assets/audio/covertopen.mp3");
+					}
+					if (generatedItem.ItemRarity === 'Contraband') {
+						audioRef.current.pause();
+						changeAudioSourceAndPlay("/assets/audio/goldopen.mp3");
+					}
+					if (generatedItem) {
+						//alert('You won a ' + getWearName(generatedItem.ItemDurability) + ' ' + generatedItem.ItemName + ' worth ' + generatedItem.ItemValue);
+						props.userState.inventory.push(generatedItem);
+					} else {
 						alert('There was an error fetching the item price.');
 					}
 
+					setPopUpVisible(true);
+
 					setPlayingGame(false);
 				});
-                //setPlayingGame(false);
-				//alert('You won a ' + gRollerItems.winningItem.ItemName);
-				//props.userState.inventory.push(GenerateItem(gRollerItems.winningItem));
             });
     }
 
     return (
         <>
+			<audio ref={audioRef} src={src} />
             <div className='Background2'></div>
             <Navbar userState = { props.userState } userFunction = { props.userFunction }/>
             <div className='ButtonContainer'>
@@ -779,13 +1028,19 @@ function CaseOpener(props) {
 						Object.entries(Cases).map(([caseName, caseDetail]) => {
 							return (<div className='CaseSelections'>
 								<div className='CaseSelections2' style={{
-								borderColor: 'yellow',
-								borderWidth: caseName === chosenCase ? '1px' : '0px'
-							}} onClick={playingGame ? undefined : () => {
-									setChosenCase(caseName);
-									gRollerItems = GetRollerList(caseDetail.CaseItems); 
-									// alert("Updating to " + caseName);
-									}}>
+									borderColor: 'yellow',
+									borderWidth: caseName === chosenCase ? '1px' : '0px'
+								}} onClick={()=>{
+										if (!playingGame) {
+											if (!isPopUpVisible) {
+												audioRef.current.pause();
+												changeAudioSourceAndPlay("/assets/audio/buttonclick.mp3")
+												setChosenCase(caseName);
+												gRollerItems = GetRollerList(caseDetail.CaseItems); 
+											}
+										}
+									}
+								}>
 									<CaseCard
 										caseName={caseName}
 										caseURL={caseDetail.CaseURL}
@@ -795,11 +1050,41 @@ function CaseOpener(props) {
 							</div>)
 						})
 					}
-					
 				</div>
+					{
+						isPopUpVisible && (
+  							<PopUpComponent
+    							winningItem={gRollerItems.winningItem} // Corrected prop passing
+    							onClick={() => setPopUpVisible(!isPopUpVisible)} // Ensure PopUpComponent handles this
+  							/>
+						)
+					}
             </div>
         </>
     );
+}
+
+function PopUpComponent({winningItem, onClick}) {
+	return (
+			<div className='PopUpContainer' onClick={onClick}>
+				<img
+					src="/assets/Popup Case.gif"
+					alt="Pop Up Gif"
+				/>
+				<div className='PopUp'>
+					{winningItem.ItemName}
+					<img
+						src={winningItem.ItemURL}
+						alt="missing."
+						style={{
+							width: '100%',
+							position: 'inherit',
+							top: '3em'
+						}}
+					/>
+				</div>
+			</div>	
+	);
 }
 
 export default CaseOpener;

@@ -32,8 +32,8 @@ let Games = [
         'gameURL' : '/roulette'
     },
     {
-        'gameName' : 'Upgrade',
-        'gameURL' : '/upgrade'
+        'gameName' : 'About Us',
+        'gameURL' : '/aboutus'
     },
     {
         'gameName' : 'Inventory',

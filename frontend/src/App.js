@@ -8,6 +8,7 @@ import Crash from './pages/Crash';
 import CaseOpener from './pages/CaseOpener';
 import Register from './pages/Register';
 import Inventory from './pages/Inventory';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   const [balance, setBalance] = useState(1000);
@@ -39,6 +40,7 @@ function App() {
         <Route path="/crash" element={<Crash userState = { userState } userFunction = { userFunction }/>} />
         <Route path="/caseopener" element={<CaseOpener userState = { userState } userFunction = { userFunction } />} />
         <Route path="/inventory" element={<Inventory userState = { userState } userFunction = { userFunction } />} />
+        <Route path="/aboutus" element={<AboutUs userState = { userState } userFunction = { userFunction }/>} />
       </Routes>
     </Router>
   );

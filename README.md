@@ -8,7 +8,7 @@ Commands:
 * npm install react-chartjs-2 chart.js  
 * npm install framer-motion  
 * npm install express express-session bcrypt cors dotenv jsonwebtoken pg
-
+* npm install –save-dev jest supertest
   
 Run:  
 * cd backend  

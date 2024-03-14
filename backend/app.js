@@ -63,6 +63,10 @@ app.get('/api/itemPrice', async (req, res) => {
     }
 });
 
-app.listen(4000, () => {
-    console.log('Server started on port 4000');
-});
+if (require.main === module) {
+    app.listen(4000, () => {
+        console.log('Server started on port 4000');
+    });
+}
+
+module.exports = app;
